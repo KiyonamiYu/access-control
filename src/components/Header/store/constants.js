@@ -1,0 +1,3 @@
+export const UPDATE_TIME = 'UPDATE_TIME';
+export const GET_WEATHER_DATA = 'GET_WEATHER_DATA';
+export const SET_WEATHER = 'SET_WEATHER';

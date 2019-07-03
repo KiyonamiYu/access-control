@@ -2,17 +2,19 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 export const AdminWrapper = styled.div`
     .left-nav {
-        width: 14.4444%;        //控制全屏宽度
-        min-width: 240px;       //限制缩小的最小宽度，防止标题下移
-        height: calc(100vh);    //填充整个左侧导航栏
+        //width: 14.4444%;        //控制全屏宽度
+        //min-width: 240px;       //限制缩小的最小宽度，防止标题下移
+        height: calc(100vh);      //!!!填充整个左侧导航栏（只填满浏览器的窗口高度，得配合 .main 中的 overflow ，不然若有滚动条，会裸露底下为白色）
         background-color: #001529;
     }
     .main {
+        background-color: #f1f3f5;
         height: calc(100vh);
+        overflow: auto;           //!!!右侧高度溢出，滚动（使左侧保持不动
     }
     .content {
         position: relative;
-        padding: 20px;
+        padding: 20px;          //!!!使 page 上下左右都留空，也使其居中，使背景浅灰色裸露
     }
     .logo {
         line-height: 90px;

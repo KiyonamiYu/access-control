@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { withRouter, Link } from 'react-router-dom';
 import { actionCreators } from './store';
 import { Menu } from 'antd';
 
 const { SubMenu } = Menu;
 
-class LeftNav extends Component {
+class LeftNav extends PureComponent {
     constructor(props) {
         super(props);
         this.renderMenu = this.renderMenu.bind(this);
@@ -34,17 +35,19 @@ class LeftNav extends Component {
     }
 
     renderMenu(data) {
-        return data.map((itme) => {
-            console.log(itme.title);
-            if(itme.children === undefined) {
-                return (<Menu.Item key={itme.key}>{itme.title}</Menu.Item>);
+        return data.map((item) => {
+            if(item.children === undefined) {
+                return (
+                <Menu.Item key={item.key}>
+                    <Link to={item.key}>{item.title}</Link>
+                </Menu.Item>);
             }
             return (
                 <SubMenu 
-                    key={itme.key} 
-                    title={itme.title}
+                    key={item.key} 
+                    title={item.title}
                 > 
-                    {this.renderMenu(itme.children)}
+                    {this.renderMenu(item.children)}
                 </SubMenu>
             );
         });
@@ -61,5 +64,5 @@ const mapDispatchToProps = (dispatch) => ({
     }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(LeftNav);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LeftNav));
 

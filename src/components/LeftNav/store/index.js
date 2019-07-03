@@ -1,4 +1,4 @@
-import reducer from './reducer';
+import leftNavReducer from './reducer';
 import * as actionCreators from './actionCreators';
 import * as constants from './constants';
-export { reducer, actionCreators, constants };
+export { leftNavReducer, actionCreators, constants };
